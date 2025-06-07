@@ -16,13 +16,20 @@ const Navbar = ({ theme, onThemeToggle }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 120;
       let current = "home";
       for (const section of sections) {
         const el = document.getElementById(section.id);
-        if (el && el.offsetTop <= scrollPos) {
-          current = section.id;
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 130 && rect.bottom > 130) {
+            current = section.id;
+            break;
+          }
         }
+      }
+      // If at the bottom of the page, force 'contact'
+      if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2)) {
+        current = "contact";
       }
       setActive(current);
     };
