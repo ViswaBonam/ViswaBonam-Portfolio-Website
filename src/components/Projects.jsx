@@ -52,18 +52,18 @@ const projects = [
     image: "/projects/equityinsights.png"
   },
   {
-    title: "Bitcoin Return Prediction with Multivariate Asset Integration",
+    title: "XRP Return Prediction with Multivariate Asset Integration",
     short: "Designed a multivariate return prediction system incorporating macro and crypto data using SHAP and XGBoost to provide explainable predictions.",
     skills: ["XGBoost", "SHAP", "Python", "Feature Selection", "Finance"],
     details: `
-    - Created a predictive model to forecast Bitcoin returns using XGBoost, leveraging historical pricing data alongside macroeconomic and alternative asset indicators.
+    - This project explores how macroeconomic and financial market indicators influence the return behavior of XRP (Ripple).
 
-    - Applied SHAP analysis to select the top 20 features from a multivariate dataset, increasing model interpretability while reducing noise by 40%. Achieved a 15% improvement in classification accuracy by applying custom feature selection and imputation techniques.
+    - Using historical data from NASDAQ, the US Dollar Index (DXY), the Crypto Market Index (CMC200), and Emerging Markets ETF (EEM), I examined potential predictive relationships to better understand XRP's behavior in a multivariate market environment.
 
-    - This project demonstrates the integration of explainable AI (XAI) with financial prediction models for cryptocurrency markets.
+    - Discovered observable patterns between XRP and other assets, laying the groundwork for future signal-based crypto trading models or correlation-based forecasting.
     `,
-    github: "https://github.com/ViswaBonam/Bitcoin-Return-Prediction-with-Multivariate-Asset",
-    image: "/projects/bitcoin.png"
+    github: "https://github.com/ViswaBonam/XRP-Return-Prediction-with-Multivariate-Asset",
+    image: "/projects/ripple.png"
   }
 ];
 
