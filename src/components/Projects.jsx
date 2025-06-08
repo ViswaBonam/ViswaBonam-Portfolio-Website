@@ -20,7 +20,7 @@ const projects = [
     
     - Built robust Kafka Producers & Consumers in Python, achieving 99.9% uptime and ensuring high availability for critical analytics workflows.
     `,
-    github: "https://github.com/ViswaBonam",
+    github: "https://github.com/ViswaBonam/Real-Time-Data-Streaming-Querying-on-AWS",
     image: "/projects/aws.png"
   },
   {
@@ -48,7 +48,7 @@ const projects = [
 
     - This solution is ideal for analysts and portfolio managers needing fast, explainable, GenAI-assisted news insights.
     `,
-    github: "https://github.com/ViswaBonam",
+    github: "https://github.com/ViswaBonam/Equity-Insight-AI-Driven-News-Analysis-Tool",
     image: "/projects/equityinsights.png"
   },
   {
