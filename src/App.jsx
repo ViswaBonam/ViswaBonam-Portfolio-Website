@@ -42,6 +42,13 @@ function App() {
     }, 50);
   };
 
+  useEffect(() => {
+    console.log("Pinging backend server to wake it up...");
+    fetch("https://portfolio-chatbot-backend-siqc.onrender.com/chat", { method: "GET" })
+      .then(() => console.log("✅Backend server pinged successfully."))
+      .catch(() => console.log("❌Backend server ping failed (may still be waking up)."));
+  }, []);
+
   return (
     <div>
       <Navbar theme={theme} onThemeToggle={handleThemeToggle} />
