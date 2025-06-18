@@ -13,6 +13,16 @@ const Home = ({ onScrollDown }) => {
     }
   };
 
+  const handleDownloadResume = (e) => {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = '/Viswa_Bonam_Resume.pdf';
+    link.download = 'Viswa_Bonam_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="home" className="home-section">
       <AnimatedBackground />
@@ -26,7 +36,7 @@ const Home = ({ onScrollDown }) => {
             <span className="typing-text">{typingText}</span>
           </div>
           <div className="home-btn-group">
-            <a href="\Viswa_Bonam_Resume.pdf" download className="resume-btn fun-bounce">Download Resume</a>
+            <button className="resume-btn" onClick={handleDownloadResume}>Download Resume</button>
             <button className="view-projects-btn" onClick={handleViewProjects}>View Projects</button>
           </div>
           <button className="scroll-down-btn" onClick={onScrollDown} aria-label="Scroll to see more">
