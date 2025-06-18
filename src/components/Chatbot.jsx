@@ -62,22 +62,35 @@ const Chatbot = () => {
       </div>
       {open && createPortal(
         <div className="chatbot-modal" onClick={() => setOpen(false)}>
-          <section className="chatbot-modal-content" onClick={e => e.stopPropagation()} aria-modal="true" role="dialog">
-            <header className="chatbot-header" style={{width: '100%', display: 'flex', alignItems: 'center', gap: 12, marginBottom: '1.2rem', position: 'relative'}}>
-              <div className="chatbot-avatar" style={{width: 40, height: 40, borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, color: '#fff', fontWeight: 700, boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>🤖</div>
-              <div className="chatbot-title" style={{ fontWeight: 600, fontSize: 18, letterSpacing: 0.2, flex: 1 }}>Viswa's Assistant</div>
-              <button className="chatbot-close-btn" onClick={() => setOpen(false)} aria-label="Close chatbot">&times;</button>
+          <section className="chatbot-modal-content" onClick={e => e.stopPropagation()} aria-modal="true" role="dialog" style={{padding: 0, margin: 0, boxShadow: 'none'}}>
+            <header className="chatbot-header" style={{width: '90%', display: 'flex', alignItems: 'center', gap: 12, marginBottom: '1.2rem', position: 'relative', padding: '24px 40px 0 40px'}}>
+              <div className="chatbot-avatar" style={{width: 40, height: 40, borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, color: '#fff', fontWeight: 700, boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>V</div>
+              <div style={{display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0}}>
+                <div className="chatbot-title" style={{ fontWeight: 600, fontSize: 18, letterSpacing: 0.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Viswa's AI Assistant</div>
+                <div className="chatbot-role" style={{ fontSize: 13, color: '#b0b0b0' }}>Resume Assistant</div>
+              </div>
+              <button className="chatbot-close-btn" onClick={() => setOpen(false)} aria-label="Close chatbot" style={{marginLeft: 'auto', fontSize: 32, color: '#2563eb', background: 'none', border: 'none', cursor: 'pointer', lineHeight: 1, marginTop: '-25px'}}>&times;</button>
             </header>
-            <main className="chatbot-body" style={{flex: 1, width: '100%', display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 12, overflowY: 'auto'}}>
+            <main className="chatbot-body" style={{flex: 1, width: '90%', display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 12, overflowY: 'auto', padding: '0 40px'}}>
+              {/* Welcome message */}
+              {messages.length === 0 && (
+                <div className="chatbot-bubble-row chatbot-bubble-row-assistant">
+                  <div className="chatbot-meta chatbot-meta-assistant">
+                    <span className="chatbot-avatar-small">V</span>
+                    <span className="chatbot-label">Viswa</span>
+                  </div>
+                  <div className="chatbot-bubble chatbot-bubble-assistant">Hi! I'm Viswa's AI assistant. Ask me about his skills, projects, or experience! <span role="img" aria-label="wave">👋</span></div>
+                </div>
+              )}
+              {/* Chat messages */}
               {messages.map((message, index) => (
                 <div
                   key={index}
                   className={`chatbot-bubble-row ${message.role === 'user' ? 'chatbot-bubble-row-user' : 'chatbot-bubble-row-assistant'}`}
-                  style={{ alignItems: message.role === 'user' ? 'flex-end' : 'flex-start', display: 'flex', flexDirection: 'column' }}
                 >
                   {message.role === 'assistant' && (
                     <div className="chatbot-meta chatbot-meta-assistant">
-                      <span className="chatbot-avatar-small">🤖</span>
+                      <span className="chatbot-avatar-small">V</span>
                       <span className="chatbot-label">Viswa</span>
                     </div>
                   )}
@@ -91,7 +104,7 @@ const Chatbot = () => {
                 </div>
               ))}
               {isLoading && (
-                <div className="chatbot-bubble-row chatbot-bubble-row-assistant" style={{ alignItems: 'flex-start', display: 'flex', flexDirection: 'column' }}>
+                <div className="chatbot-bubble-row chatbot-bubble-row-assistant">
                   <div className="typing-indicator">
                     <span></span>
                     <span></span>
@@ -101,12 +114,19 @@ const Chatbot = () => {
               )}
               <div ref={messagesEndRef} />
             </main>
-            <form className="chatbot-input-area" onSubmit={handleSubmit} style={{width: '100%', display: 'flex', alignItems: 'center', gap: 10, marginTop: 'auto'}}>
+            {/* Quick questions at the bottom */}
+            <div className="chatbot-quick-questions">
+              <span className="chatbot-quick-label">Quick questions:</span>
+              <button type="button" className="chatbot-quick-btn" onClick={() => setInput('What are your Skills?')}>Skills</button>
+              <button type="button" className="chatbot-quick-btn" onClick={() => setInput('Tell me about your Projects?')}>Projects</button>
+              <button type="button" className="chatbot-quick-btn" onClick={() => setInput('How can I Contact you?')}>Contact</button>
+            </div>
+            <form className="chatbot-input-area" onSubmit={handleSubmit} style={{width: '90%', display: 'flex', alignItems: 'center', gap: 10, marginTop: 0, padding: '16px 40px 16px 40px'}}>
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your message..."
+                placeholder="Ask me anything..."
                 className="chatbot-input"
                 disabled={isLoading}
                 autoFocus
@@ -118,7 +138,7 @@ const Chatbot = () => {
                 className="chatbot-send-btn"
                 aria-label="Send message"
               >
-                Send
+                <FiSend size={20} />
               </button>
             </form>
           </section>
@@ -129,4 +149,4 @@ const Chatbot = () => {
   );
 };
 
-export default Chatbot; 
+export default Chatbot;    
