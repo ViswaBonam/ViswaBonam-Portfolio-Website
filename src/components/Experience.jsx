@@ -4,7 +4,7 @@ const experience = [
   {
     logo: "/edu/utdsom.png",
     institution: "UTDSOM Investment Corporation",
-    degree: "Financial Analyst and Machine Learning Specialist",
+    degree: "Data Analyst",
     dates: "Jul 2024 – Aug 2024",
     desc: "Developed finance‐focused ML models, analytics tools, and real‐time dashboards to support investment decision‐making.",
     bullets: [
@@ -17,7 +17,7 @@ const experience = [
     logo: "/edu/skyess.png",
     institution: "SkyEss Techno Solutions",
     degree: "Associate Database Developer",
-    dates: "Nov 2022 – Jan 2023",
+    dates: "Jul 2022 – Aug 2023",
     desc: "Built and optimized SQL-based databases for business analytics.",
     bullets: [
       "Designed and optimized SQL-based databases, reducing query time by 30%.",
